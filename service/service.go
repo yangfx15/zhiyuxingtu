@@ -13,6 +13,10 @@ func NewService(dao *dao.DAO) *Service {
     return &Service{dao: dao}
 }
 
+func (s *Service) CreateUser(user *model.User) error {
+    return s.dao.CreateUser(user)
+}
+
 func (s *Service) Login(openID, nickname, avatarURL string) (*model.User, error) {
     user, err := s.dao.GetUserByOpenID(openID)
     if err == nil {
