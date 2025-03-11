@@ -93,7 +93,8 @@ func getWeChatOpenID(code string) (string, error) {
 }
 
 type Question struct {
-    QuestionId string `json:"question_id" gorm:"index:qid;type:varchar(128)"`
+	ID         uint   `json:"id"`
+	QuestionId string `json:"question_id" gorm:"index:qid;type:varchar(128)"`
 	Category   string `json:"category" gorm:"index:category-type;type:varchar(128)"`
 	Type       string `json:"type" gorm:"index:category-type;type:varchar(128)"`
 	Difficulty int    `json:"difficulty" type:tinyint(4)"`
@@ -127,6 +128,8 @@ func (h *Handler) GetQuestions(c *gin.Context) {
 	var res []Question
 	for _, qt := range questions {
 		res = append(res, Question{
+			ID:         qt.ID,
+			QuestionId: qt.QuestionId,
 			Category:   qt.Category,
 			Type:       qt.Type,
 			Difficulty: qt.Difficulty,

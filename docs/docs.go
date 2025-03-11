@@ -208,7 +208,13 @@ const docTemplate = `{
                 "difficulty": {
                     "type": "integer"
                 },
+                "id": {
+                    "type": "integer"
+                },
                 "options": {
+                    "type": "string"
+                },
+                "question_id": {
                     "type": "string"
                 },
                 "type": {
