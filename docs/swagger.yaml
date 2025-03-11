@@ -1,7 +1,28 @@
 definitions:
   handler.LoginRequest:
     properties:
-      userName:
+      avatar_url:
+        type: string
+      code:
+        type: string
+      nickname:
+        type: string
+      openid:
+        type: string
+    type: object
+  handler.Question:
+    properties:
+      answer:
+        type: string
+      category:
+        type: string
+      content:
+        type: string
+      difficulty:
+        type: integer
+      options:
+        type: string
+      type:
         type: string
     type: object
   handler.Result:
@@ -18,41 +39,15 @@ definitions:
           $ref: '#/definitions/handler.Result'
         type: array
     type: object
-  model.Question:
+  handler.TestResultData:
     properties:
-      answer:
-        type: string
-      category:
-        type: string
-      content:
-        type: string
-      createdAt:
-        type: string
-      difficulty:
+      score:
         type: integer
-      id:
-        type: integer
-      options:
-        type: string
-      type:
-        type: string
-      updatedAt:
-        type: string
     type: object
-  model.User:
+  handler.TestResultResp:
     properties:
-      avatarURL:
-        type: string
-      createdAt:
-        type: string
-      id:
-        type: integer
-      nickname:
-        type: string
-      openID:
-        type: string
-      updatedAt:
-        type: string
+      data:
+        $ref: '#/definitions/handler.TestResultData'
     type: object
 info:
   contact: {}
@@ -75,7 +70,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/model.User'
+            $ref: '#/definitions/handler.LoginRequest'
         "400":
           description: Bad Request
           schema:
@@ -114,7 +109,7 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/model.Question'
+              $ref: '#/definitions/handler.Question'
             type: array
         "400":
           description: Bad Request
@@ -149,21 +144,15 @@ paths:
         "200":
           description: OK
           schema:
-            additionalProperties:
-              type: string
-            type: object
+            $ref: '#/definitions/handler.TestResultResp'
         "400":
           description: Bad Request
           schema:
-            additionalProperties:
-              type: string
-            type: object
+            $ref: '#/definitions/handler.TestResultResp'
         "500":
           description: Internal Server Error
           schema:
-            additionalProperties:
-              type: string
-            type: object
+            $ref: '#/definitions/handler.TestResultResp'
       summary: 提交测试
       tags:
       - 测试

@@ -1,8 +1,8 @@
 package service
 
 import (
-    "xingtu/dao"
-    "xingtu/model"
+	"xingtu/dao"
+	"xingtu/model"
 )
 
 type Service struct {
@@ -37,7 +37,7 @@ func (s *Service) GetQuestions(category, questionType string, limit int) ([]mode
     return s.dao.GetQuestions(category, questionType, limit)
 }
 
-func (s *Service) SubmitTest(userID uint, category string, score int) error {
+func (s *Service) SubmitTest(userID, category string, score int) error {
     record := &model.TestRecord{
         UserID:   userID,
         Category: category,

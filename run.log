@@ -1,0 +1,15 @@
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] POST   /login                    --> xingtu/api/handler.(*Handler).Login-fm (3 handlers)
+[GIN-debug] GET    /questions                --> xingtu/api/handler.(*Handler).GetQuestions-fm (3 handlers)
+[GIN-debug] POST   /submit-test              --> xingtu/api/handler.(*Handler).SubmitTest-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :18080
+[GIN] 2025/03/11 - 20:08:23 | 200 |   10.990349ms |  120.234.40.211 | GET      "/questions?category=%E8%AE%A1%E7%AE%97%E6%9C%BA&type=%E5%90%8E%E7%AB%AF"
+[GIN] 2025/03/11 - 20:18:41 | 404 |         782ns |   47.94.224.232 | GET      "/login"

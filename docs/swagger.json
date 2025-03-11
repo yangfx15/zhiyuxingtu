@@ -32,7 +32,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/model.User"
+                            "$ref": "#/definitions/handler.LoginRequest"
                         }
                     },
                     "400": {
@@ -91,7 +91,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/model.Question"
+                                "$ref": "#/definitions/handler.Question"
                             }
                         }
                     },
@@ -144,28 +144,19 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
+                            "$ref": "#/definitions/handler.TestResultResp"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
+                            "$ref": "#/definitions/handler.TestResultResp"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
+                            "$ref": "#/definitions/handler.TestResultResp"
                         }
                     }
                 }
@@ -176,7 +167,39 @@
         "handler.LoginRequest": {
             "type": "object",
             "properties": {
-                "userName": {
+                "avatar_url": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "nickname": {
+                    "type": "string"
+                },
+                "openid": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.Question": {
+            "type": "object",
+            "properties": {
+                "answer": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "difficulty": {
+                    "type": "integer"
+                },
+                "options": {
+                    "type": "string"
+                },
+                "type": {
                     "type": "string"
                 }
             }
@@ -203,58 +226,19 @@
                 }
             }
         },
-        "model.Question": {
+        "handler.TestResultData": {
             "type": "object",
             "properties": {
-                "answer": {
-                    "type": "string"
-                },
-                "category": {
-                    "type": "string"
-                },
-                "content": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                },
-                "difficulty": {
+                "score": {
                     "type": "integer"
-                },
-                "id": {
-                    "type": "integer"
-                },
-                "options": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string"
-                },
-                "updatedAt": {
-                    "type": "string"
                 }
             }
         },
-        "model.User": {
+        "handler.TestResultResp": {
             "type": "object",
             "properties": {
-                "avatarURL": {
-                    "type": "string"
-                },
-                "createdAt": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "integer"
-                },
-                "nickname": {
-                    "type": "string"
-                },
-                "openID": {
-                    "type": "string"
-                },
-                "updatedAt": {
-                    "type": "string"
+                "data": {
+                    "$ref": "#/definitions/handler.TestResultData"
                 }
             }
         }
