@@ -1,15 +1,17 @@
 package main
 
 import (
-    "gorm.io/driver/mysql"
-    "gorm.io/gorm"
-    "xingtu/api/router"
-    "xingtu/config"
-    "xingtu/dao"
-    "xingtu/model"
-    "xingtu/service"
-    "xingtu/api/handler"
-    _ "xingtu/docs" // 引入 Swagger 文档
+	"log"
+	"xingtu/api/handler"
+	"xingtu/api/router"
+	"xingtu/config"
+	"xingtu/dao"
+	_ "xingtu/docs" // 引入 Swagger 文档
+	"xingtu/model"
+	"xingtu/service"
+
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 func main() {
@@ -30,5 +32,7 @@ func main() {
     service := service.NewService(dao)
     handler := handler.NewHandler(service)
     r := router.SetupRouter(handler)
+
+    log.Printf("zhiyuxingtu running")
     r.Run(":18080")
 }
